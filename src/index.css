@@ -1,3 +1,24 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+
+#app {
+    background: #17181f;
+    /* background: black; */
+}
+
+.delay img {
+    animation-delay: .5s;
+}
+
+@keyframes scaling {
+    0% {
+        scale: 1;
+    }
+
+    to {
+        scale: 1.2;
+    }
+}

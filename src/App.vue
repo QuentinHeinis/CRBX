@@ -1,14 +1,12 @@
 <script setup>
 import { RouterLink, RouterView } from 'vue-router';
-import Header from './components/Header.vue';
+import Header from './components/layout/Header.vue';
 </script>
 
 <template>
 
-    <header class="fixed z-30">
-        <Header />
-    </header>
-    <main class="min-h-screen bg-sombre">
+    <Header />
+    <main class="min-h-screen pt-32 z-10">
         <RouterView />
     </main>
 </template>
