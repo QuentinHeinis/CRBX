@@ -1,5 +1,5 @@
 <template>
-    <div class="w-16" aria-hidden="true">
+    <div class="max-w-[64px]" aria-hidden="true">
         <img src="/images/stars.png" alt="image d'étoiles">
     </div>
 </template>
