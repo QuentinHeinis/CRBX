@@ -4,9 +4,9 @@ import { ChevronDownIcon } from '@heroicons/vue/24/outline'
 
 <template>
     <header class="flex justify-between items-center w-screen text-white lg:px-40 z-20 h-[82px] relative">
-        <div class="w-[177px] absolute">
+        <router-link to="/" class="w-[177px] absolute">
             <img src="/images/logos/CRBX_Logo.png" alt="Logo CRBX">
-        </div>
+        </router-link>
         <nav class="fixed right-40 ">
             <ul class="flex gap-6">
                 <li>create</li>

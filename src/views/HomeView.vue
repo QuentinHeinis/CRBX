@@ -6,6 +6,8 @@ import BorderBtn from '../components/UI_Kit/Buttons/BorderBtn.vue';
 import Stars from '../components/UI_Kit/deco/Stars.vue';
 import HomeCards from '../components/UI_Kit/Cards/HomeCards.vue';
 import Circle from '../components/UI_Kit/deco/Circle.vue';
+import { ChevronDownIcon } from '@heroicons/vue/24/outline';
+import ItemCards from '../components/UI_Kit/Cards/ItemCards.vue';
 </script>
 
 <template>
@@ -63,8 +65,27 @@ import Circle from '../components/UI_Kit/deco/Circle.vue';
                     </span>
                 </h2>
             </div>
-            <div class="flex h-fit flex-wrap justify-around gap-x-[5%] gap-y-7">
+            <div class="flex flex-wrap justify-center gap-x-[5%] gap-y-7">
+                <ul class="flex text-white justify-between w-1/4">
+                    <li class="flex gap-1">categories
+                        <ChevronDownIcon class="w-3" />
+                    </li>
+                    <li class="flex gap-1">season
+                        <ChevronDownIcon class="w-3" />
+                    </li>
+                    <li class="flex gap-1">newest
+                        <ChevronDownIcon class="w-3" />
+                    </li>
+                </ul>
+            </div>
 
+            <div class="mt-28 grid grid-cols-[repeat(auto-fit,minmax(300px,1fr))] gap-x-7 gap-y-10 mx-auto">
+                <ItemCards />
+                <ItemCards />
+                <ItemCards />
+                <ItemCards />
+                <ItemCards />
+                <ItemCards />
             </div>
         </section>
     </div>
