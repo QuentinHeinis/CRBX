@@ -79,13 +79,14 @@ import ItemCards from '../components/UI_Kit/Cards/ItemCards.vue';
                 </ul>
             </div>
 
-            <div class="mt-28 grid grid-cols-[repeat(auto-fit,minmax(300px,1fr))] gap-x-7 gap-y-10 mx-auto">
+            <div
+                class="mt-28 grid grid-cols-[repeat(auto-fit,minmax(300px,1fr))] w-4/5 lg:w-full gap-x-7 gap-y-10 mx-auto">
                 <ItemCards />
-                <ItemCards />
-                <ItemCards />
-                <ItemCards />
-                <ItemCards />
-                <ItemCards />
+                <ItemCards :Img="'/images/temporary/Image-1.png'" />
+                <ItemCards :Img="'/images/temporary/Image-2.png'" />
+                <ItemCards :Img="'/images/temporary/Image-3.png'" />
+                <ItemCards :Img="'/images/temporary/Image-4.png'" />
+                <ItemCards :Img="'/images/temporary/Image-5.png'" />
             </div>
         </section>
     </div>
