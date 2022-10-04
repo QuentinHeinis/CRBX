@@ -40,12 +40,12 @@ defineProps({
             @click="fav=!fav">
             <HeartIcon class="w-6 stroke-white" :class="{'fill-red-600 stroke-red-600' : fav}" />
         </div>
-        <div class="absolute bottom-0 w-full min-h-[5rem] rounded-t-[20px] bg-white bg-opacity-40 px-9 py-7">
+        <div class="absolute bottom-0 w-full min-h-[5rem] rounded-t-[20px] bg-black bg-opacity-40 px-9 py-7">
             <div class="relative">
                 <div class="w-14 h-14 rounded-full overflow-hidden absolute -top-16 left-4">
                     <img :src="avatar" :alt="creator" class="object-cover">
                 </div>
-                <h3 class="text-2xl font-semibold">{{title}} <span v-if="FromCollection">- {{Collection}}</span></h3>
+                <h4 class="text-2xl font-semibold">{{title}} <span v-if="FromCollection">- {{Collection}}</span></h4>
                 <p class="font-light text-xs mb-3">by {{creator}}</p>
                 <div class="flex gap-4">
                     <a href="https://opensea.io/"
@@ -57,6 +57,3 @@ defineProps({
         </div>
     </div>
 </template>
-<style scoped>
-
-</style>
