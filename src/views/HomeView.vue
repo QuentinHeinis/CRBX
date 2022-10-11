@@ -36,7 +36,7 @@ import CircleText from '../components/UI_Kit/deco/CircleText.vue';
                 <Stars class="absolute -top-12 -right-3 w-10" />
                 <Stars class="absolute -left-10 delay" />
             </div>
-            <CircleText class="hidden md:flex -translate-y-16" />
+            <CircleText class="hidden md:flex -translate-y-16 translate-x-10" />
         </section>
         <Background class="pt-40" />
         <section>
