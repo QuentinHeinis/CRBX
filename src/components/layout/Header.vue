@@ -20,6 +20,9 @@ const switchMenu = () => {
             <ul class="hidden md:flex gap-6">
                 <li>create</li>
                 <li>socials</li>
+                <RouterLink to="/three">
+                    threeJs
+                </RouterLink>
                 <li class="flex items-center gap-1 relative liste_container">collections
                     <ChevronDownIcon class="w-3 chevron" />
                     <ul class="absolute w-full liste">
