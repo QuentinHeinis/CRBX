@@ -20,7 +20,7 @@ defineProps({
 <template>
     <div class="max-w-sm  relative rounded-3xl overflow-hidden text-white bg-gradient-to-t">
         <div class="w-80 h-80">
-            <span v-if="topartiste" class="font-Sequel-105">Top Artiste</span>
+            <span v-if="topartiste" class="font-Sequel-105 flex w-full justify-center pt-7">Top Artiste</span>
         </div>
         <div class="absolute bottom-0 w-full h-1/2 rounded-t-[20px] bg-white backdrop-blur-sm bg-opacity-40 px-9 py-7">
             <div class="relative pt-9">
