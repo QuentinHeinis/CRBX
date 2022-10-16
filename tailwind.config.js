@@ -16,6 +16,11 @@ module.exports = {
       },
       animation: {
         'spin-slow': 'spin 10s linear infinite',
+      },
+      fontFamily: {
+        'Sequel-45': 'sequel100black-45, sans-serif',
+        'startup-light': 'startup-light, sans-serif',
+        'startup-regular': 'startup-regular, sans-serif',
       }
     },
   },
