@@ -7,6 +7,11 @@ import HomeCards from '../components/UI_Kit/Cards/HomeCards.vue';
 import { ChevronDownIcon } from '@heroicons/vue/24/outline';
 import ItemCards from '../components/UI_Kit/Cards/ItemCards.vue';
 import CircleText from '../components/UI_Kit/deco/CircleText.vue';
+import PeopleCards from '../components/UI_Kit/Cards/PeopleCards.vue';
+
+const goTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' })
+}
 </script>
 
 <template>
@@ -91,6 +96,28 @@ import CircleText from '../components/UI_Kit/deco/CircleText.vue';
                 <ItemCards :Img="'/images/temporary/Image-5.png'" class="mx-auto" />
             </div>
         </section>
+        <section>
+            <div class="text-white my-28 relative flex w-full justify-center">
+                <h2 class="flex justify-center text-3xl lg:text-4xl font-light gap-2 py-2 px-1 font-startup-light ">
+                    Our Top Artist in
+                    <span class="font-bold flex gap-1 font-Sequel-45">
+                        CRBX<span class="text-xl relative -top-2">&copy;</span>
+                    </span>
+                </h2>
+            </div>
+            <div class="flex h-fit flex-wrap justify-around gap-x-[5%] gap-y-7">
+                <PeopleCards :creatorid="'@test_user'" :with="'Originals-Offf'" :topartiste="true"
+                    class="mx-auto  from-slate-400 to-purple-900" />
+                <PeopleCards :creatorid="'@test_user'" :with="'Originals-Offf'"
+                    class="mx-auto from-amber-900 to-red-500" />
+                <PeopleCards :creatorid="'@test_user'" :with="'Originals-Offf'"
+                    class="mx-auto from-violet-700 to-rose-400" />
+            </div>
+        </section>
+
+        <div class="w-full flex justify-center mt-48 mb-28">
+            <button class="font-startup-light text-xl text-white" @click="goTop">Back to top</button>
+        </div>
     </div>
 </template>
 
