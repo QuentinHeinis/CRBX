@@ -50,7 +50,7 @@ const goTop = () => {
                     <span aria-hidden class="w-2/5 h-[2px] bg-white absolute left-0 bottom-0"></span>
                 </h2>
             </div>
-            <div class="flex h-fit flex-wrap justify-around gap-x-[5%] gap-y-7">
+            <div class="flex h-fit flex-wrap justify-around gap-x-[5%] gap-y-7 relative">
                 <HomeCards :title="'Create your own NFT using the CRBX tool'">CRBX use his own intuitive and creativity
                     generator based on your thought and imagination
                 </HomeCards>
@@ -60,19 +60,21 @@ const goTop = () => {
                 <HomeCards :title="'Create your own NFT using the CRBX tool'">CRBX use his own intuitive and creativity
                     generator based on your thought and imagination
                 </HomeCards>
+                <Stars class="absolute -right-2 md:-right-10 -z-10" />
             </div>
         </section>
-        <section>
-            <div class="text-white my-28 relative flex w-full justify-center">
-                <h2 class="flex justify-center text-3xl lg:text-4xl font-light gap-2 py-2 px-1 font-startup-light ">
+        <section class="px-3 md:px-10">
+            <div class="text-white my-28 relative flex w-full md:justify-center">
+                <h2 class="flex justify-center text-xl md:text-4xl font-light gap-2 py-2 px-1 font-startup-light">
                     Look for a
                     <span class="font-bold flex gap-1 font-Sequel-45">
                         CRBX<span class="text-xl relative -top-2">&copy;</span>
                     </span>
+                    <span aria-hidden class="w-2/5 h-[2px] bg-white absolute left-0 bottom-0"></span>
                     collection
                 </h2>
             </div>
-            <div class="">
+            <div>
                 <ul class="flex  text-white justify-center gap-5 font-startup-light">
                     <li class="flex gap-1 liste_container">categories
                         <ChevronDownIcon class="w-3 chevron" />
@@ -96,13 +98,14 @@ const goTop = () => {
                 <ItemCards :Img="'/images/temporary/Image-5.png'" class="mx-auto" />
             </div>
         </section>
-        <section>
-            <div class="text-white my-28 relative flex w-full justify-center">
-                <h2 class="flex justify-center text-3xl lg:text-4xl font-light gap-2 py-2 px-1 font-startup-light ">
+        <section class="px-3 md:px-10">
+            <div class="text-white my-28 relative flex w-full md:justify-center">
+                <h2 class="flex justify-center text-xl md:text-4xl font-light gap-2 py-2 px-1 font-startup-light">
                     Our Top Artist in
                     <span class="font-bold flex gap-1 font-Sequel-45">
                         CRBX<span class="text-xl relative -top-2">&copy;</span>
                     </span>
+                    <span aria-hidden class="w-2/5 h-[2px] bg-white absolute left-0 bottom-0"></span>
                 </h2>
             </div>
             <div class="flex h-fit flex-wrap justify-around gap-x-[5%] gap-y-7">
