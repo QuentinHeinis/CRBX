@@ -7,7 +7,7 @@
         </div>
         <div class="flex items-center justify-center gap-2 w-1/3">
             <div class="h-16">
-                <img src="/images/logos/logoMMi.png" alt="">
+                <img src="/images/logos/logoMMI.png" alt="">
             </div>
             <div class="h-16">
                 <img src="/images/logos/logoIut.png" alt="">
