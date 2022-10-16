@@ -19,8 +19,10 @@ module.exports = {
       },
       fontFamily: {
         'Sequel-45': 'sequel100black-45, sans-serif',
+        'Sequel-105': 'sequel100black-105, sans-serif',
         'startup-light': 'startup-light, sans-serif',
         'startup-regular': 'startup-regular, sans-serif',
+        'startup-medium': 'startup-medium, sans-serif',
       }
     },
   },

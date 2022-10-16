@@ -40,7 +40,8 @@ defineProps({
             @click="fav=!fav">
             <HeartIcon class="w-6 stroke-white" :class="{'fill-red-600 stroke-red-600' : fav}" />
         </div>
-        <div class="absolute bottom-0 w-full min-h-[5rem] rounded-t-[20px] bg-white bg-opacity-40 px-9 py-7">
+        <div
+            class="absolute bottom-0 w-full min-h-[5rem] rounded-t-[20px] bg-white backdrop-blur-sm bg-opacity-40 px-9 py-7">
             <div class="relative">
                 <div class="w-14 h-14 rounded-full overflow-hidden absolute -top-16 left-4">
                     <img :src="avatar" :alt="creator" class="object-cover">
