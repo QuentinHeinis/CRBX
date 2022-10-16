@@ -8,7 +8,7 @@ defineProps({
 </script>
 <template>
     <RouterLink to="/"
-        class="flex w-40 h-11 justify-center items-center text-xl font-bold rounded-[20px] border-[#676DCA] border">
+        class="flex px-11 py-2 min-h-[2rem] justify-center items-center text-xl font-bold rounded-[20px] border-[#676DCA] border">
         <slot></slot>
     </RouterLink>
 </template>

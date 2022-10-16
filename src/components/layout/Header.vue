@@ -9,10 +9,10 @@ const switchMenu = () => {
 
 <template>
     <header class="flex justify-between items-center w-screen text-white px-9 lg:px-40 z-20 h-16 lg:h-[82px] relative">
-        <router-link to="/" class="w-24 md:w-[177px]">
+        <router-link to="/" class="w-24 hidden md:w-[177px]">
             <img src="/images/logos/CRBX_Logo.png" alt="Logo CRBX">
         </router-link>
-        <nav class="fixed right-9 lg:right-40 ">
+        <nav class="fixed right-4 md:right-9 lg:right-40 ">
             <div class="flex md:hidden w-8 h-3 flex-col justify-between" @click="switchMenu">
                 <span class="w-full h-[2px] bg-white"></span>
                 <span class="w-2/3 h-[2px] bg-white self-end"></span>

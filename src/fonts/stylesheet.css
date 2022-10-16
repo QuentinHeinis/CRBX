@@ -1,5 +1,5 @@
 @font-face {
-    font-family: 'startup-blackregular';
+    font-family: 'startup-black';
     src: url('./startup/startup-black-webfont.woff2') format('woff2'),
         url('./startup/startup-black-webfont.woff') format('woff');
     font-weight: normal;
@@ -11,7 +11,7 @@
 
 
 @font-face {
-    font-family: 'startup-boldregular';
+    font-family: 'startup-bold';
     src: url('./startup/startup-bold-webfont.woff2') format('woff2'),
         url('./startup/startup-bold-webfont.woff') format('woff');
     font-weight: normal;
@@ -23,7 +23,7 @@
 
 
 @font-face {
-    font-family: 'startup-extraboldregular';
+    font-family: 'startup-extrabold';
     src: url('./startup/startup-extrabold-webfont.woff2') format('woff2'),
         url('./startup/startup-extrabold-webfont.woff') format('woff');
     font-weight: normal;
@@ -35,7 +35,7 @@
 
 
 @font-face {
-    font-family: 'startup-extralightregular';
+    font-family: 'startup-extralight';
     src: url('./startup/startup-extralight-webfont.woff2') format('woff2'),
         url('./startup/startup-extralight-webfont.woff') format('woff');
     font-weight: normal;
@@ -47,7 +47,7 @@
 
 
 @font-face {
-    font-family: 'startup-lightregular';
+    font-family: 'startup-light';
     src: url('./startup/startup-light-webfont.woff2') format('woff2'),
         url('./startup/startup-light-webfont.woff') format('woff');
     font-weight: normal;
@@ -59,7 +59,7 @@
 
 
 @font-face {
-    font-family: 'startup-mediumregular';
+    font-family: 'startup-medium';
     src: url('./startup/startup-medium-webfont.woff2') format('woff2'),
         url('./startup/startup-medium-webfont.woff') format('woff');
     font-weight: normal;
@@ -71,7 +71,7 @@
 
 
 @font-face {
-    font-family: 'startup-regularregular';
+    font-family: 'startup-regular';
     src: url('./startup/startup-regular-webfont.woff2') format('woff2'),
         url('./startup/startup-regular-webfont.woff') format('woff');
     font-weight: normal;
@@ -83,7 +83,7 @@
 
 
 @font-face {
-    font-family: 'startup-semiboldregular';
+    font-family: 'startup-semibold';
     src: url('./startup/startup-semibold-webfont.woff2') format('woff2'),
         url('./startup/startup-semibold-webfont.woff') format('woff');
     font-weight: normal;
@@ -95,7 +95,7 @@
 
 
 @font-face {
-    font-family: 'startup-thinregular';
+    font-family: 'startup-thin';
     src: url('./startup/startup-thin-webfont.woff2') format('woff2'),
         url('./startup/startup-thin-webfont.woff') format('woff');
     font-weight: normal;

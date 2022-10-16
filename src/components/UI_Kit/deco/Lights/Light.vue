@@ -9,8 +9,8 @@
 .light {
     position: absolute;
     /* background: rgba(142, 145, 189, 0.553); */
-    background: rgba(107, 113, 203, 0.39);
+    background: rgba(107, 113, 203, 0.40);
     opacity: 0.5;
-    filter: blur(85px);
+    filter: blur(50px);
 }
 </style>

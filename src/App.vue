@@ -6,7 +6,7 @@ import Header from './components/layout/Header.vue';
 <template>
 
     <Header />
-    <main class="min-h-screen pt-32 z-10 relative">
+    <main class="min-h-screen z-10 relative after:opacity-25 after:lg:opacity-75">
         <RouterView />
     </main>
 </template>
