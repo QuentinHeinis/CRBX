@@ -17,7 +17,7 @@ const switchMenu = () => {
                 <span class="w-full h-[2px] bg-white"></span>
                 <span class="w-2/3 h-[2px] bg-white self-end"></span>
             </div>
-            <ul class="hidden md:flex gap-6">
+            <ul class="hidden md:flex gap-6 items-center">
                 <li>
                     <RouterLink to="/create">create</RouterLink>
                 </li>
@@ -33,12 +33,17 @@ const switchMenu = () => {
                     <ChevronDownIcon class="w-3 chevron" />
                     <ul class="absolute w-32 liste">
                         <li>
-                            <RouterLink to="/collection/offf">offf</RouterLink>
-                        </li>
-                        <li>
                             <RouterLink to="/collection/all">All collections</RouterLink>
                         </li>
+                        <li>
+                            <RouterLink to="/collection/offf">offf</RouterLink>
+                        </li>
                     </ul>
+                </li>
+                <li>
+                    <RouterLink to="/login">
+                        <img src="/images/Profil.svg" alt="">
+                    </RouterLink>
                 </li>
             </ul>
         </nav>
