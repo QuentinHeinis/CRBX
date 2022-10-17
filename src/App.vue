@@ -26,6 +26,6 @@ main::after {
     background-image: url('/images/bg.webp');
     background-size: contain;
     z-index: -10;
-    background-repeat: space repeat-y;
+    background-repeat: space;
 }
 </style>
