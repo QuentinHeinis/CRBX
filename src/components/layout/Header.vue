@@ -31,12 +31,12 @@ const switchMenu = () => {
                 </li>
                 <li class="flex items-center gap-1 relative liste_container">collections
                     <ChevronDownIcon class="w-3 chevron" />
-                    <ul class="absolute w-full liste">
+                    <ul class="absolute w-32 liste">
                         <li>
                             <RouterLink to="/collection/offf">offf</RouterLink>
                         </li>
                         <li>
-                            <RouterLink to="/collection/mmi">mmi</RouterLink>
+                            <RouterLink to="/collection/all">All collections</RouterLink>
                         </li>
                     </ul>
                 </li>
@@ -57,14 +57,14 @@ nav .liste_container:hover .chevron {
 nav .liste {
     visibility: hidden;
     opacity: 0;
-    bottom: 0;
+    top: 0%;
     transition: .4s ease-in-out;
 }
 
 nav .liste_container:hover .liste {
     visibility: visible;
     opacity: 1;
-    bottom: -200%;
+    top: 100%;
     transition: .4s ease-in-out;
 }
 </style>
