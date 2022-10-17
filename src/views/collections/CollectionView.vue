@@ -54,7 +54,7 @@ export default {
                 <Stars class="absolute hidden lg:block -top-12 -right-3 w-10" />
                 <Stars class="absolute hidden lg:block -left-10 delay" />
             </div>
-            <div class="w-32 mx-auto order-1 self-center lg:order-2">
+            <div class="w-32 mx-auto order-1 mb-10 self-center lg:order-2">
                 <img src="/images/logos/logoOfff2.png" alt="">
             </div>
         </section>
