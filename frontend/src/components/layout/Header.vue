@@ -24,11 +24,6 @@ const switchMenu = () => {
                 <li>
                     <RouterLink to="/socials">socials</RouterLink>
                 </li>
-                <li>
-                    <RouterLink to="/three">
-                        threeJs
-                    </RouterLink>
-                </li>
                 <li class="flex items-center gap-1 relative liste_container">collections
                     <ChevronDownIcon class="w-3 chevron" />
                     <ul class="absolute w-32 liste">

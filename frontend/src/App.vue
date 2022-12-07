@@ -2,6 +2,10 @@
 import { RouterLink, RouterView } from 'vue-router';
 import Header from './components/layout/Header.vue';
 import Footer from './components/layout/Footer.vue';
+import { user } from '@/supabase'
+
+console.log({ user });
+
 </script>
 
 <template>
@@ -13,7 +17,7 @@ import Footer from './components/layout/Footer.vue';
     <Footer />
 </template>
 
-<style>
+<style scoped>
 main::after {
     content: '';
     position: absolute;
