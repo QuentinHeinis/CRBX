@@ -3,9 +3,11 @@ import CircleText from '../components/UI_Kit/deco/CircleText.vue';
 import FullBtn from '../components/UI_Kit/Buttons/FullBtn.vue';
 import BorderBtn from '../components/UI_Kit/Buttons/BorderBtn.vue';
 import ItemCards from '../components/UI_Kit/Cards/ItemCards.vue';
+import { user, signout } from '@/supabase'
 const goTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' })
 }
+
 </script>
 <template>
     <div class="lg:px-40 lg:pt-32 overflow-x-hidden text-white">
@@ -13,7 +15,7 @@ const goTop = () => {
             <h1 class="font-startup-light text-4xl bg-[#676DCA] w-fit py-5 px-10">Create your <span
                     class="font-Sequel-45">NFT</span>
             </h1>
-            <div class="flex flex-col w-2/3">
+            <div class="flex flex-col w-2/3" v-if="user">
                 <span class="self-end font-startup-light text-xl">CRBX&copy;</span>
                 <canvas class="bg-[#242424] w-full">
 
@@ -24,6 +26,9 @@ const goTop = () => {
                     <button
                         class="flex px-11 py-2 min-h-[2rem] justify-center items-center text-xl font-bold rounded-[20px] bg-[#676DCA] ">finish</button>
                 </div>
+            </div>
+            <div v-else class="">
+                <h3 class="font-sequel-45 text-2xl uppercase">you must be logged in to create</h3>
             </div>
             <CircleText class="absolute -top-10 -left-10 -z-10" />
 

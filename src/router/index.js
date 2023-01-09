@@ -20,6 +20,8 @@ const router = createRouter({
     { path: '/socials', name: 'socials', component: () => import('../views/SocialsView.vue') },
     { path: '/Login', name: 'Login', component: () => import('../views/LoginView.vue') },
     { path: '/Create', name: 'Create', component: () => import('../views/CreateView.vue') },
+
+    { path: '/Profil/:id', name: 'Profil', component: () => import('../views/Profil/ProfilView.vue') },
   ]
 })
 

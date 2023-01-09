@@ -86,14 +86,14 @@ const signup = async () => {
                             @click.prevent="login">Login</FullBtn>
                         <FullBtn v-else class="w-fit self-center px-20 py-5 rounded-full" @click.prevent="signup">Create
                             account</FullBtn>
-                        <p v-if="!newUser" class="self-center">You don't have an accout ? <button
-                                class="font-startup-medium" @click="switchMod">Sign up</button>
-                        </p>
-                        <p v-else class="self-center">You already have an accout ? <button class="font-startup-medium"
-                                @click="switchMod">Login !</button>
-                        </p>
                     </div>
                 </form>
+                <p v-if="!newUser" class="self-center">You don't have an accout ? <button class="font-startup-medium"
+                        @click="switchMod">Sign up</button>
+                </p>
+                <p v-else class="self-center">You already have an accout ? <button class="font-startup-medium"
+                        @click="switchMod">Login !</button>
+                </p>
             </div>
         </div>
     </div>

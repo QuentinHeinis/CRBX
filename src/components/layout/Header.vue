@@ -1,10 +1,15 @@
 <script setup>
 import { ChevronDownIcon } from '@heroicons/vue/24/outline'
 import { ref } from 'vue';
+const props = defineProps({
+    user: { type: Object, default: () => { } }
+})
 const menuOpen = ref(false)
 const switchMenu = () => {
     menuOpen.value = !menuOpen.value
 }
+
+console.log(props.user?.id);
 </script>
 
 <template>
@@ -35,7 +40,12 @@ const switchMenu = () => {
                         </li>
                     </ul>
                 </li>
-                <li>
+                <li v-if="user">
+                    <RouterLink :to="{ name: 'Profil', params: { id: user.id } }">
+                        <img src="/images/Profil.svg" alt="">
+                    </RouterLink>
+                </li>
+                <li v-else>
                     <RouterLink to="/login">
                         <img src="/images/Profil.svg" alt="">
                     </RouterLink>
