@@ -3,11 +3,10 @@ import { RouterLink, RouterView } from 'vue-router';
 import Header from './components/layout/Header.vue';
 import Footer from './components/layout/Footer.vue';
 import { user } from '@/supabase'
-import { openai, response } from '@/openai'
+import { openai } from '@/openai'
 import { sound } from '@/freesound'
 console.log(sound);
 console.log(openai);
-console.log({ response });
 
 console.log({ user });
 
@@ -15,7 +14,7 @@ console.log({ user });
 
 <template>
 
-    <Header :user="user"/>
+    <Header :user="user" />
     <main class="min-h-screen z-10 relative after:opacity-25 after:lg:opacity-75">
         <RouterView v-slot="{ Component, route }">
             <transition name="out-in">
