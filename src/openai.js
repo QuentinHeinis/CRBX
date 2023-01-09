@@ -4,7 +4,7 @@ const configuration = new Configuration({
     apiKey: import.meta.env.VITE_OPENAI,
 });
 export const openai = new OpenAIApi(configuration);
-export const response = await openai.listEngines();
+// export const response = await openai.listEngines();
 // export const response = await openai.createImage({
 //     prompt: "3d rings with a dark background",
 //     n: 1,
