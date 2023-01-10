@@ -5,6 +5,7 @@ import Footer from './components/layout/Footer.vue';
 import { user } from '@/supabase'
 import { openai } from '@/openai'
 import { sound } from '@/freesound'
+import Draw from './components/Draw.vue';
 console.log(sound);
 console.log(openai);
 
