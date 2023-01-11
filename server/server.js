@@ -16,37 +16,20 @@ app.use(cors())
 app.use(express.json())
 
 app.get('/', async (req, res) => {
-    // const image = ""
-    // const prompt = "3d red donuts with light background"
-    // const response = await openai.createImageEdit(
-    //     fs.createReadStream("./test.png"),
-    //     fs.createReadStream("./test.png"),
-    //     "3d red donuts with light background",
-    //     1,
-    //     "1024x1024"
-    // );
-    // console.log(response)
-    // res.status(200).send({
-    //     bot: response.data
-    // })
     res.status(200).send({
-        message: "test"
+        message: "hello world"
     })
 })
 
 app.post('/', async (req, res) => {
     try {
-        const prompt = req.body.prompt;
-        const image = req.body.image;
+        const prompt = req.body.prompt
 
-
-        const response = await openai.createImageEdit(
-            fs.createReadStream(`${image}`),
-            fs.createReadStream(`${image}`),
-            `${prompt}`,
-            1,
-            "1024x1024"
-        );
+        const response = await openai.createImage({
+            prompt: `${prompt}`,
+            n: 1,
+            size: "1024x1024",
+        });
         res.status(200).send({
             bot: response.data
         });
