@@ -45,11 +45,11 @@ let view = ref(false)
     <div class="max-w-sm  relative rounded-3xl overflow-hidden text-black" :class="view && `scale-150 z-50`">
         <audio :src="audio" autoplay loop v-if="view"></audio>
         <div class="object-cover w-full h-full relative bg-slate-400">
-            <img :src="Img" :alt="title" class="object-cover absolute z-30">
+            <img :src="Img" :alt="title" class="object-cover absolute z-10">
             <img :src="backImg" :alt="title" class="object-cover">
         </div>
         <div
-            class="absolute bottom-0 w-full min-h-[5rem] rounded-t-[20px] bg-white backdrop-blur-sm bg-opacity-40 px-9 py-7">
+            class="absolute bottom-0 z-20 w-full min-h-[5rem] rounded-t-[20px] bg-white backdrop-blur-sm bg-opacity-40 px-9 py-7">
             <div class="relative">
                 <div class="w-14 h-14 rounded-full overflow-hidden absolute -top-16 left-4">
                     <img :src="avatar" :alt="creator" class="object-cover">
