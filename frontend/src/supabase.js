@@ -14,7 +14,6 @@ export const user = ref()
 supabase.auth.onAuthStateChange(async () => {
     const { data, error } = await supabase.auth.getSession()
     user.value = data.session?.user
-    console.log(user.value);
 })
 
 export const signout = async () => {

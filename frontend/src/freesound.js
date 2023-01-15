@@ -1,3 +1,2 @@
 
-
-export const sound = fetch('https://freesound.org/apiv2/search/text/?query=calm_forest&token=jIJRePG0Py3YhaHBFjGBtVYWVkBrmJWZw6wZuP6M')
+export const freesoundId = import.meta.env.VITE_FREESOUND_API

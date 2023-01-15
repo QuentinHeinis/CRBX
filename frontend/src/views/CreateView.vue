@@ -1,39 +1,92 @@
 <script setup>
 import { ref } from 'vue'
-import CircleText from '../components/UI_Kit/deco/CircleText.vue';
+import CircleTextNo from '../components/UI_Kit/deco/CircleTextNo.vue';
 import FullBtn from '../components/UI_Kit/Buttons/FullBtn.vue';
 import BorderBtn from '../components/UI_Kit/Buttons/BorderBtn.vue';
 import ItemCards from '../components/UI_Kit/Cards/ItemCards.vue';
-import { user } from '@/supabase'
+import VueDrawingCanvas from "vue-drawing-canvas";
+import { supabase, user } from '../supabase';
+import { freesoundId } from '../freesound';
+import router from '../router';
+console.log(user);
 const goTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' })
 }
 let description = ref('')
 let image = ref()
+let imsg = ref()
+
 const generate = async () => {
-    const response = await fetch('http://localhost:5000', {
+    let generateImg = ref()
+    await fetch('https://crbx-backend.onrender.com/', {
         method: 'POST',
         headers: {
-            'Content-Type': 'application/json',
-            'Content-Type': 'image/base64'
+            'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-            prompt: description.value,
-            image: image.value
+            prompt: description.value
         })
     })
-    if (response.ok) {
-        console.log(response.json());
-    } else {
-        const error = await response.text()
-        alert(error)
+        .then(response => response.json())
+        .then(response => {
+            generateImg.value = Object.values(response)[0].data[0].url
+        })
+
+    const sound = ref()
+    await fetch(`https://freesound.org/apiv2/search/text/?query=${description.value.split(' ').join('_')}&token=${freesoundId}`)
+        .then(response => response.json())
+        .then(response => {
+            let id = response.results[0].id
+            fetch('https://freesound.org/apiv2/sounds/' + id + '/?token=' + freesoundId)
+                .then(response => response.json())
+                .then(response => {
+                    sound.value = Object.values(response.previews)[1]
+                })
+        });
+    const { data, error } = await supabase
+        .from('nft')
+        .insert({
+            id_user: user.value.id,
+            url_son: sound.value,
+            img: generateImg.value,
+            draw: image.value,
+            prompt: description.value
+        })
+    redirect()
+}
+const redirect = () => {
+    router.push("/Profil")
+}
+const { data, error } = await supabase
+    .from('nft')
+    .select('*')
+    .limit(3)
+let dataShow = ref([])
+const getUserData = async (id) => {
+    const { data, error } = await supabase
+        .from('users')
+        .select('*')
+        .eq('id', id)
+    return data
+}
+for (let i = 0; i < 3; i++) {
+    if (data[i]) {
+        let username = ref()
+        let userPic = ref()
+        await getUserData(data[i].id_user)
+            .then(response => {
+                username.value = Object.values(response)[0].username
+                userPic.value = Object.values(response)[0].img
+            })
+        data[i].username = username.value
+        data[i].userPic = userPic.value
+        dataShow.value.push(data[i])
+
     }
 }
 
 </script>
 <script>
-import VueDrawingCanvas from "vue-drawing-canvas";
-
 export default {
     name: "ServeDev",
     components: {
@@ -126,8 +179,9 @@ export default {
             <form class="flex flex-col w-2/3" v-if="user">
                 <span class="self-end font-startup-light text-xl">CRBX&copy;</span>
                 <div class="flex justify-center">
+                    <img :src="imsg" alt="">
                     <div>
-                        <vue-drawing-canvas ref="VueCanvasDrawing" v-model:image="image" :width="600" :height="400"
+                        <vue-drawing-canvas ref="VueCanvasDrawing" v-model:image="image" :width="512" :height="512"
                             :stroke-type="strokeType" :line-cap="lineCap" :line-join="lineJoin" :fill-shape="fillShape"
                             :eraser="eraser" :lineWidth="line" :color="color" :background-color="backgroundColor"
                             :background-image="backgroundImage" :watermark="watermark" :initial-image="initialImage"
@@ -180,23 +234,20 @@ export default {
             </form>
             <div v-else class="">
                 <h3 class="font-sequel-45 text-2xl uppercase">you must be logged in to create</h3>
+                <BorderBtn :to="'/Login'" class="text-xs md:text-2xl font-Sequel-45">Log in</BorderBtn>
             </div>
-            <CircleText class="absolute -top-10 -left-10 -z-10" />
+            <CircleTextNo class="absolute -top-10 -left-10 -z-10" />
 
         </section>
-        <section class="mt-10">
+        <section class="mt-10" v-if="user">
             <h2 class="font-Sequel-45 text-3xl bg-[#676DCA] w-fit py-2 px-4">
                 How does it works?
             </h2>
             <p class="font-startup-light text-2xl">
-                CRBX use a program that we develop, using the line that you draw it will automatically make a 3D
-                generated model of it, and then, the word your gonna associate with your drawing will influence the
+                CRBX use a program that we develop, using the line that you draw it will automatically make a generated
+                model of it, and then, the word your gonna associate with your drawing will influence the
                 generating of the image in a certain way wich will make your NFT unique
             </p>
-            <div class="flex gap-8 z-10 flex-wrap">
-                <FullBtn class="text-xs md:text-2xl font-Sequel-45">create</FullBtn>
-                <BorderBtn class="text-xs md:text-2xl font-startup-light">collections</BorderBtn>
-            </div>
         </section>
         <section class="px-3 md:px-10">
             <div class="text-white my-28 relative flex w-full md:justify-center">
@@ -210,9 +261,9 @@ export default {
             </div>
             <div
                 class="mt-28 grid grid-cols-[repeat(auto-fit,minmax(300px,1fr))] w-4/5 lg:w-full gap-x-7 gap-y-10 mx-auto">
-                <ItemCards :FromCollection="false" :Collection="'machin'" class="mx-auto" />
-                <ItemCards :Img="'/images/temporary/Image-1.png'" class="mx-auto" />
-                <ItemCards :Img="'/images/temporary/Image-2.png'" class="mx-auto" />
+                <ItemCards v-for="                               nft                                in dataShow"
+                    :key="nft.id_nft" :creator="nft.username" :title="nft.prompt" :Img="nft.img" :backImg="nft.draw"
+                    :avatar="nft.userPic" :id="nft.id_nft" :audio="nft.url_son" class="mx-auto" />
             </div>
         </section>
         <div class="w-full flex justify-center mt-48 mb-28">

@@ -16,12 +16,13 @@ const router = createRouter({
       // which is lazy-loaded when the route is visited.
       component: () => import('../views/AboutView.vue')
     },
-    { path: '/collection/:id', name: 'collection', component: () => import('../views/collections/CollectionView.vue') },
+    { path: '/collection', name: 'collection', component: () => import('../views/collections/CollectionView.vue') },
     { path: '/socials', name: 'socials', component: () => import('../views/SocialsView.vue') },
     { path: '/Login', name: 'Login', component: () => import('../views/LoginView.vue') },
     { path: '/Create', name: 'Create', component: () => import('../views/CreateView.vue') },
 
-    { path: '/Profil/:id', name: 'Profil', component: () => import('../views/Profil/ProfilView.vue') },
+    { path: '/Profil', name: 'Profil', component: () => import('../views/Profil/ProfilView.vue') },
+    { path: '/Edit', name: 'Edit', component: () => import('../views/Profil/EditView.vue') },
   ]
 })
 

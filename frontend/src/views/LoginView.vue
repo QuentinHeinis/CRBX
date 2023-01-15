@@ -26,16 +26,17 @@ const signup = async () => {
         if (passwrd.value == password2.value) {
             const { data, error } = await supabase.auth.signUp({
                 email: mail.value,
-                password: passwrd.value,
-                options: {
-                    data: {
-                        username: username.value,
-
-                    }
-                }
+                password: passwrd.value
             })
 
+
             console.log(data.user);
+            const { data1 } = await supabase
+                .from('users')
+                .insert({
+                    id: data.user.id,
+                    username: username.value
+                })
             if (error) throw error
         }
     } catch (error) {

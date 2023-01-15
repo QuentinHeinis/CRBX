@@ -6,7 +6,7 @@ import Stars from '@/components/UI_Kit/deco/Stars.vue';
 import HomeCards from '@/components/UI_Kit/Cards/HomeCards.vue';
 import { ChevronDownIcon } from '@heroicons/vue/24/outline';
 import ItemCards from '@/components/UI_Kit/Cards/ItemCards.vue';
-import CircleText from '@/components/UI_Kit/deco/CircleText.vue';
+import CircleTextNo from '@/components/UI_Kit/deco/CircleTextNo.vue';
 import PeopleCards from '@/components/UI_Kit/Cards/PeopleCards.vue';
 
 const goTop = () => {
@@ -33,7 +33,7 @@ const goTop = () => {
                 <Stars class="absolute hidden lg:block -top-12 -right-3 w-10" />
                 <Stars class="absolute hidden lg:block -left-10 delay" />
             </div>
-            <CircleText class="order-1 -mt-16 lg:translate-x-32 lg:order-2 self-center" />
+            <CircleTextNo class="order-1 -mt-16 lg:translate-x-32 lg:order-2 self-center" />
         </section>
     </div>
 </template>

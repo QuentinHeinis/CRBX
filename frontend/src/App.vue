@@ -3,25 +3,19 @@ import { RouterLink, RouterView } from 'vue-router';
 import Header from './components/layout/Header.vue';
 import Footer from './components/layout/Footer.vue';
 import { user } from '@/supabase'
-import { openai } from '@/openai'
-import { sound } from '@/freesound'
-import Draw from './components/Draw.vue';
-console.log(sound);
-console.log(openai);
-
-console.log({ user });
-
+import { freesoundId } from './freesound';
+import { ref } from 'vue';
 </script>
 
 <template>
-
     <Header :user="user" />
     <main class="min-h-screen z-10 relative after:opacity-25 after:lg:opacity-75">
-        <RouterView v-slot="{ Component, route }">
-            <transition name="out-in">
-                <component :is="Component" :key="route.path" />
-            </transition>
-        </RouterView>
+        <Suspense>
+            <RouterView />
+            <template #fallback>
+                ...loading
+            </template>
+        </Suspense>
     </main>
     <Footer />
 </template>

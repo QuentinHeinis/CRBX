@@ -8,9 +8,37 @@ import { ChevronDownIcon } from '@heroicons/vue/24/outline';
 import ItemCards from '../components/UI_Kit/Cards/ItemCards.vue';
 import CircleText from '../components/UI_Kit/deco/CircleText.vue';
 import PeopleCards from '../components/UI_Kit/Cards/PeopleCards.vue';
-
+import { supabase } from '../supabase';
+import { ref } from 'vue';
 const goTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' })
+}
+const { data, error } = await supabase
+    .from('nft')
+    .select('*')
+    .limit(10)
+let dataShow = ref([])
+const getUserData = async (id) => {
+    const { data, error } = await supabase
+        .from('users')
+        .select('*')
+        .eq('id', id)
+    return data
+}
+for (let i = 0; i < 10; i++) {
+    if (data[i]) {
+        let username = ref()
+        let userPic = ref()
+        await getUserData(data[i].id_user)
+            .then(response => {
+                username.value = Object.values(response)[0].username
+                userPic.value = Object.values(response)[0].img
+            })
+        data[i].username = username.value
+        data[i].userPic = userPic.value
+        dataShow.value.push(data[i])
+
+    }
 }
 </script>
 
@@ -29,8 +57,9 @@ const goTop = () => {
                     create an original work to your style.
                 </h4>
                 <div class="flex gap-8 z-10 flex-wrap">
-                    <FullBtn class="text-xs md:text-2xl font-Sequel-45">create</FullBtn>
-                    <BorderBtn class="text-xs md:text-2xl font-startup-light">collections</BorderBtn>
+                    <FullBtn :to="'/Create'" class="text-xs md:text-2xl font-Sequel-45">create</FullBtn>
+                    <BorderBtn :to="'/collection'" class="text-xs md:text-2xl font-startup-light">collections
+                    </BorderBtn>
                 </div>
                 <Light class="top-0 lg:-left-3 w-20 h-20 lg:w-36 lg:h-36" />
                 <Light class="top-12 left-28 w-20 h-20 lg:w-36 lg:h-36" />
@@ -71,50 +100,14 @@ const goTop = () => {
                         CRBX<span class="text-xl relative -top-2">&copy;</span>
                     </span>
                     <span aria-hidden class="w-2/5 h-[2px] bg-white absolute left-0 bottom-0"></span>
-                    collection
+                    creation
                 </h2>
             </div>
-            <div>
-                <ul class="flex  text-white justify-center gap-5 font-startup-light">
-                    <li class="flex gap-1 liste_container">categories
-                        <ChevronDownIcon class="w-3 chevron" />
-                    </li>
-                    <li class="flex gap-1 liste_container">season
-                        <ChevronDownIcon class="w-3 chevron" />
-                    </li>
-                    <li class="flex gap-1 liste_container font-Sequel-45">newest
-                        <ChevronDownIcon class="w-3 chevron" />
-                    </li>
-                </ul>
-            </div>
-
             <div
                 class="mt-28 grid grid-cols-[repeat(auto-fit,minmax(300px,1fr))] w-4/5 lg:w-full gap-x-7 gap-y-10 mx-auto">
-                <ItemCards :FromCollection="false" :Collection="'machin'" class="mx-auto" />
-                <ItemCards :Img="'/images/temporary/Image-1.png'" class="mx-auto" />
-                <ItemCards :Img="'/images/temporary/Image-2.png'" class="mx-auto" />
-                <ItemCards :Img="'/images/temporary/Image-3.png'" class="mx-auto" />
-                <ItemCards :Img="'/images/temporary/Image-4.png'" class="mx-auto" />
-                <ItemCards :Img="'/images/temporary/Image-5.png'" class="mx-auto" />
-            </div>
-        </section>
-        <section class="px-3 md:px-10">
-            <div class="text-white my-28 relative flex w-full md:justify-center">
-                <h2 class="flex justify-center text-xl md:text-4xl font-light gap-2 py-2 px-1 font-startup-light">
-                    Our Top Artist in
-                    <span class="font-bold flex gap-1 font-Sequel-45">
-                        CRBX<span class="text-xl relative -top-2">&copy;</span>
-                    </span>
-                    <span aria-hidden class="w-2/5 h-[2px] bg-white absolute left-0 bottom-0"></span>
-                </h2>
-            </div>
-            <div class="flex h-fit flex-wrap justify-around gap-x-[5%] gap-y-7">
-                <PeopleCards :creatorid="'@test_user'" :with="'Originals-Offf'" :topartiste="true"
-                    class="mx-auto  from-slate-400 to-purple-900" />
-                <PeopleCards :creatorid="'@test_user'" :with="'Originals-Offf'"
-                    class="mx-auto from-amber-900 to-red-500" />
-                <PeopleCards :creatorid="'@test_user'" :with="'Originals-Offf'"
-                    class="mx-auto from-violet-700 to-rose-400" />
+                <ItemCards v-for="                            nft                             in dataShow"
+                    :key="nft.id_nft" :creator="nft.username" :title="nft.prompt" :Img="nft.img" :backImg="nft.draw"
+                    :avatar="nft.userPic" :id="nft.id_nft" :audio="nft.url_son" class="mx-auto" />
             </div>
         </section>
 
