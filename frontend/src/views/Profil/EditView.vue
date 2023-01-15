@@ -26,8 +26,6 @@ getUserData(user.value.id)
     .then(response => {
         username.value = Object.values(response)[0].username
         userPic.value = Object.values(response)[0].img
-        console.log(username.value);
-        console.log(userPic.value);
     })
 
 const file = ref()
@@ -35,11 +33,9 @@ const newImage = ref()
 let previewI = ref()
 const preview = () => {
     newImage.value = file.value.files[0]
-    console.log(newImage.value);
     var reader = new FileReader();
     reader.onloadend = function () {
         previewI.value = reader.result;
-        console.log(reader.result);
     }
     if (newImage) {
         reader.readAsDataURL(newImage.value);

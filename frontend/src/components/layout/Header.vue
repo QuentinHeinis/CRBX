@@ -7,7 +7,6 @@ const props = defineProps({
 const menuOpen = ref(false)
 const switchMenu = () => {
     menuOpen.value = !menuOpen.value
-    console.log(menuOpen.value);
 }
 </script>
 
@@ -23,7 +22,7 @@ const switchMenu = () => {
                 <span class="w-2/3 h-[2px] bg-white self-end transition-all"
                     :class="menuOpen && `w-full -rotate-45 absolute`"></span>
             </div>
-            <ul class="fixed flex flex-col justify-center top-0 bottom-0 left-0 right-0 bg-sombre translate-x-full transition-all md:translate-x-0 md:flex-row md:relative gap-6 items-center "
+            <ul class="fixed flex flex-col justify-center top-0 bottom-0 left-0 right-0 bg-sombre md:bg-transparent translate-x-full transition-all md:translate-x-0 md:flex-row md:relative gap-6 items-center "
                 :class="menuOpen && `translate-x-0 md:translate-x-0`">
                 <li class="md:hidden">
                     <RouterLink @click="switchMenu" to="/">home</RouterLink>

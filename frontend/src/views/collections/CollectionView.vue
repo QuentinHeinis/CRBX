@@ -63,9 +63,6 @@ for (let i = 0; i < 10; i++) {
             <div class="text-white my-28 relative flex w-full md:justify-center">
                 <h2 class="flex justify-center text-xl md:text-4xl font-light gap-2 py-2 px-1 font-startup-light">
                     Look for a
-                    <span class="font-bold flex gap-1 font-Sequel-45" v-if="id == 'all'">
-                        CRBX<span class="text-xl relative -top-2">&copy;</span>
-                    </span>
                     <span class="font-bold flex gap-1 font-Sequel-45">
                         OFFF<span class="text-xl relative -top-2">&copy;</span>
                     </span>
@@ -76,12 +73,12 @@ for (let i = 0; i < 10; i++) {
 
             <div
                 class="mt-28 grid grid-cols-[repeat(auto-fit,minmax(300px,1fr))] w-4/5 lg:w-full gap-x-7 gap-y-10 mx-auto">
-                <ItemCards v-for="                             nft                              in dataShow"
+                <ItemCards v-for="                               nft                                in dataShow"
                     :key="nft.id_nft" :creator="nft.username" :title="nft.prompt" :Img="nft.img" :backImg="nft.draw"
                     :avatar="nft.userPic" :id="nft.id_nft" :audio="nft.url_son" class="mx-auto" />
             </div>
         </section>
-        <div class="w-screen absolute left-0 my-10" v-if="id == 'offf'">
+        <div class="w-screen absolute left-0 my-10">
             <img src="/images/fresque.png" alt="">
         </div>
         <div class="w-full flex justify-center mt-48 mb-28">

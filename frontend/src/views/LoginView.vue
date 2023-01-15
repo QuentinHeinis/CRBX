@@ -30,7 +30,6 @@ const signup = async () => {
             })
 
 
-            console.log(data.user);
             const { data1 } = await supabase
                 .from('users')
                 .insert({
@@ -40,7 +39,6 @@ const signup = async () => {
             if (error) throw error
         }
     } catch (error) {
-        console.log(error.error_description, error.message);
     }
 }
 
