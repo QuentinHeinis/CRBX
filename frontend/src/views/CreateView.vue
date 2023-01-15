@@ -236,7 +236,7 @@ export default {
                 <h3 class="font-sequel-45 text-2xl uppercase">you must be logged in to create</h3>
                 <BorderBtn :to="'/Login'" class="text-xs md:text-2xl font-Sequel-45">Log in</BorderBtn>
             </div>
-            <CircleTextNo class="absolute -top-10 -left-10 -z-10" />
+            <CircleTextNo class="absolute hidden md:block -top-10 -left-10 -z-10" />
 
         </section>
         <section class="mt-10" v-if="user">
@@ -261,7 +261,7 @@ export default {
             </div>
             <div
                 class="mt-28 grid grid-cols-[repeat(auto-fit,minmax(300px,1fr))] w-4/5 lg:w-full gap-x-7 gap-y-10 mx-auto">
-                <ItemCards v-for="                               nft                                in dataShow"
+                <ItemCards v-for="                                nft                                 in dataShow"
                     :key="nft.id_nft" :creator="nft.username" :title="nft.prompt" :Img="nft.img" :backImg="nft.draw"
                     :avatar="nft.userPic" :id="nft.id_nft" :audio="nft.url_son" class="mx-auto" />
             </div>
