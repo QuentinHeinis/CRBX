@@ -14,8 +14,9 @@ const goTop = () => {
 let description = ref('')
 let image = ref()
 let imsg = ref()
-
+let btnActive = ref(false)
 const generate = async () => {
+    btnActive.value = true
     let generateImg = ref()
     await fetch('https://crbx-backend.onrender.com/', {
         method: 'POST',
@@ -30,18 +31,21 @@ const generate = async () => {
         .then(response => {
             generateImg.value = Object.values(response)[0].data[0].url
         })
-
     const sound = ref()
+    let id = ref()
     await fetch(`https://freesound.org/apiv2/search/text/?query=${description.value.split(' ').join('_')}&token=${freesoundId}`)
         .then(response => response.json())
         .then(response => {
-            let id = response.results[0].id
-            fetch('https://freesound.org/apiv2/sounds/' + id + '/?token=' + freesoundId)
-                .then(response => response.json())
-                .then(response => {
-                    sound.value = Object.values(response.previews)[1]
-                })
+            id.value = response.results[0].id
+            // console.log(id.value);
+
         });
+    await fetch('https://freesound.org/apiv2/sounds/' + id.value + '/?token=' + freesoundId)
+        .then(response => response.json())
+        .then(response => {
+            sound.value = Object.values(response.previews)[1]
+            // console.log(sound.value);
+        })
     const { data, error } = await supabase
         .from('nft')
         .insert({
@@ -51,6 +55,8 @@ const generate = async () => {
             draw: image.value,
             prompt: description.value
         })
+    btnActive.value = false
+    description.value = ''
     redirect()
 }
 const redirect = () => {
@@ -226,7 +232,7 @@ export default {
                 <div class="flex w-full justify-between mt-3 items-center">
                     <input type="text" v-model="description" required
                         class="w-1/3 bg-[#24242462] text-xs px-4 py-2 border" placeholder="enter a word...">
-                    <button
+                    <button :disabled="btnActive"
                         class="flex px-11 py-2 min-h-[2rem] justify-center items-center text-xl font-bold rounded-[20px] bg-[#676DCA] "
                         @click.prevent="generate">finish</button>
                 </div>
@@ -260,7 +266,8 @@ export default {
             </div>
             <div
                 class="mt-28 grid grid-cols-[repeat(auto-fit,minmax(300px,1fr))] w-4/5 lg:w-full gap-x-7 gap-y-10 mx-auto">
-                <ItemCards v-for="                                 nft                                  in dataShow"
+                <ItemCards
+                    v-for="                                                    nft                                                     in dataShow"
                     :key="nft.id_nft" :creator="nft.username" :title="nft.prompt" :Img="nft.img" :backImg="nft.draw"
                     :avatar="nft.userPic" :id="nft.id_nft" :audio="nft.url_son" class="mx-auto" />
             </div>
