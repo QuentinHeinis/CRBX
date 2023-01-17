@@ -21,11 +21,12 @@ const getUserData = async (id) => {
         .eq('id', id)
     return data
 }
-getUserData(user.value.id)
+await getUserData(user.value.id)
     .then(response => {
         username.value = Object.values(response)[0].username
         userPic.value = Object.values(response)[0].img
     })
+
 const signOut = () => {
     signout()
     setTimeout(() => {
@@ -86,7 +87,8 @@ for (let i = 0; i < 3; i++) {
                 <h2 class="mt-12">Your NFT(s)</h2>
                 <div
                     class="m-28 grid grid-cols-[repeat(auto-fit,minmax(300px,1fr))] w-3/5 lg:w-full gap-x-7 gap-y-10 mx-auto">
-                    <ItemCards v-for="                            nft                             in dataShow"
+                    <ItemCards
+                        v-for="                                          nft                                           in dataShow"
                         :key="nft.id_nft" :creator="nft.username" :title="nft.prompt" :Img="nft.img" :backImg="nft.draw"
                         :avatar="nft.userPic" :id="nft.id_nft" :audio="nft.url_son" class="mx-auto" />
                 </div>

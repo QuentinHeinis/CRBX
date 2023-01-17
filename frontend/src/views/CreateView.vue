@@ -1,5 +1,5 @@
 <script setup>
-import { ref } from 'vue'
+import { ref, onMounted } from 'vue'
 import CircleTextNo from '../components/UI_Kit/deco/CircleTextNo.vue';
 import FullBtn from '../components/UI_Kit/Buttons/FullBtn.vue';
 import BorderBtn from '../components/UI_Kit/Buttons/BorderBtn.vue';
@@ -62,34 +62,36 @@ const generate = async () => {
 const redirect = () => {
     router.push("/Profil")
 }
-const { data, error } = await supabase
-    .from('nft')
-    .select('*')
-    .limit(3)
 let dataShow = ref([])
-const getUserData = async (id) => {
+onMounted(async () => {
     const { data, error } = await supabase
-        .from('users')
+        .from('nft')
         .select('*')
-        .eq('id', id)
-    return data
-}
-for (let i = 0; i < 3; i++) {
-    if (data[i]) {
-        let username = ref()
-        let userPic = ref()
-        await getUserData(data[i].id_user)
-            .then(response => {
-                username.value = Object.values(response)[0].username
-                userPic.value = Object.values(response)[0].img
-            })
-        data[i].username = username.value
-        data[i].userPic = userPic.value
-        dataShow.value.push(data[i])
-
+        .limit(3)
+    const getUserData = async (id) => {
+        const { data, error } = await supabase
+            .from('users')
+            .select('*')
+            .eq('id', id)
+        return data
     }
-}
+    for (let i = 0; i < 3; i++) {
+        if (data[i]) {
+            let username = ref()
+            let userPic = ref()
+            await getUserData(data[i].id_user)
+                .then(response => {
+                    username.value = Object.values(response)[0].username
+                    userPic.value = Object.values(response)[0].img
+                })
+            data[i].username = username.value
+            data[i].userPic = userPic.value
+            dataShow.value.push(data[i])
 
+        }
+    }
+
+})
 </script>
 <script>
 export default {
@@ -267,7 +269,7 @@ export default {
             <div
                 class="mt-28 grid grid-cols-[repeat(auto-fit,minmax(300px,1fr))] w-4/5 lg:w-full gap-x-7 gap-y-10 mx-auto">
                 <ItemCards
-                    v-for="                                                    nft                                                     in dataShow"
+                    v-for="                                                        nft                                                         in dataShow"
                     :key="nft.id_nft" :creator="nft.username" :title="nft.prompt" :Img="nft.img" :backImg="nft.draw"
                     :avatar="nft.userPic" :id="nft.id_nft" :audio="nft.url_son" class="mx-auto" />
             </div>
