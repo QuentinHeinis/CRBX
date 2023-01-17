@@ -39,7 +39,7 @@ const { data, error } = await supabase
     .select('*')
     .eq('id_user', user.value.id)
 let dataShow = ref([])
-for (let i = 0; i < 3; i++) {
+for (let i = 0; i < 50; i++) {
     if (data[i]) {
         let username = ref()
         let userPic = ref()
@@ -88,7 +88,7 @@ for (let i = 0; i < 3; i++) {
                 <div
                     class="m-28 grid grid-cols-[repeat(auto-fit,minmax(300px,1fr))] w-3/5 lg:w-full gap-x-7 gap-y-10 mx-auto">
                     <ItemCards
-                        v-for="                                          nft                                           in dataShow"
+                        v-for="                                           nft                                            in dataShow"
                         :key="nft.id_nft" :creator="nft.username" :title="nft.prompt" :Img="nft.img" :backImg="nft.draw"
                         :avatar="nft.userPic" :id="nft.id_nft" :audio="nft.url_son" class="mx-auto" />
                 </div>
